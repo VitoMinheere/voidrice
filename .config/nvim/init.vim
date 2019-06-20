@@ -33,6 +33,8 @@ set clipboard=unnamedplus
 	syntax on
 	set encoding=utf-8
 	set number relativenumber
+	" set working dir to currently opened file
+	autocmd bufEnter * silent! lcd %:p:h
 " Enable autocompletion:
 	set wildmode=longest,list,full
 " Disables automatic commenting on newline:
@@ -48,7 +50,7 @@ set clipboard=unnamedplus
 	set splitbelow splitright
 
 " Nerd tree
-	map <leader>n :NERDTreeToggle<CR>
+	map <silent> <space> :NERDTreeToggle<CR>
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " vimling:
