@@ -6,3 +6,8 @@ export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput se
 
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc" # Load shortcut aliases
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
+
+# Save current working dir
+PROMPT_COMMAND='pwd > "${HOME}/.cwd"'
+# Change to saved working dir on load
+[[ -f "${HOME}/.cwd ]] && ch "$(< ${HOME}/.cwd)"
