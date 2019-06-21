@@ -168,7 +168,7 @@ This indicates the direction that the next window will spawn.
 Naturally, you can use \f(CWyay\fP to look for and install any you want to add.
 .LI
 .ITEM
-\f(CWMod+r\fP \(en vifm (file browser/manager)
+\f(CWMod+r\fP \(en ranger (file browser/manager)
 .ITEM
 \f(CWMod+e\fP \(en mutt (email; not installed by default, see below)
 .ITEM
@@ -179,8 +179,6 @@ Naturally, you can use \f(CWyay\fP to look for and install any you want to add.
 \f(CWMod+a\fP \(en Dropdown calculator (hide with \f(CWmod+a\fP)
 .ITEM
 \f(CWMod+i\fP \(en htop (system info)
-.ITEM
-\f(CWMod+n\fP \(en newsboat (RSS feed reader)
 .ITEM
 \f(CWMod+y\fP \(en calcurse (calendar and schedule)
 .ITEM
