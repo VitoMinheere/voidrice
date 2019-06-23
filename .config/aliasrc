@@ -24,10 +24,10 @@ alias ka="killall" \
 	ref="shortcuts >/dev/null; source ~/.config/shortcutrc" \
 	upc="sudo pacman -Syu; pkill -RTMIN+8 i3blocks" \
 	lsp="pacman -Qett --color=always | less" \
-	ffmpeg="ffmpeg -hide_banner"
-	src="source venv/bin/activate"
-	fixscroll="~/.config/scripts/fixscroll.sh"
-	dev=". ~/.config/scripts/listprojects.sh
+	ffmpeg="ffmpeg -hide_banner" \
+	src="source venv/bin/activate" \
+	fixscroll="~/.config/scripts/fixscroll.sh" \
+	dev=". ~/.config/scripts/listprojects.sh"
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
 
