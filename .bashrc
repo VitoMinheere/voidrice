@@ -10,4 +10,4 @@ export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput se
 # Save current working dir
 PROMPT_COMMAND='pwd > "${HOME}/.cwd"'
 # Change to saved working dir on load
-[[ -f "${HOME}/.cwd ]] && ch "$(< ${HOME}/.cwd)"
+[[ -f "${HOME}/.cwd" ]] && cd "$(< ${HOME}/.cwd)"
