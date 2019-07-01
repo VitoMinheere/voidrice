@@ -1,0 +1,10 @@
+/Developer
+/Documents
+/Music
+/Pictures
+/Downloads
+.local/share
+*.log
+.cache
+.ssh
+
