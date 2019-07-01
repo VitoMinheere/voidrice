@@ -8,3 +8,5 @@
 .cache
 .ssh
 
+.vim/plugged
+.config/nvim/plugged
