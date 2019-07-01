@@ -3,6 +3,7 @@
 /Music
 /Pictures
 /Downloads
+/google-cloud-sdk
 .local/share
 *.log
 .cache
