@@ -1,11 +1,10 @@
 set nocompatible            " Disable compatibility to old-time vi
 set showmatch               " Show matching brackets.
 set ignorecase              " Do case insensitive matching
-set mouse=v                 " middle-click paste with mouse
 set hlsearch                " highlight search results
 set tabstop=4               " number of columns occupied by a tab character
 set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
-set expandtab               " converts tabs to white space
+set noexpandtab               " converts tabs to white space
 set shiftwidth=4            " width for autoindents
 set autoindent              " indent a new line the same amount as the line just typed
 set number relativenumber   " add relative line numbers
@@ -43,7 +42,7 @@ let g:ale_fixers = {
 \   'python': ['autopep8']
 \}
 " Set this variable to 1 to fix files when you save them.
-let g:ale_fix_on_save = 1
+" let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1
 
 autocmd VimEnter * NERDTree | wincmd p
@@ -70,3 +69,6 @@ nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
+
+" Add custom Commands
+command Respace execute "!sed -i 's/        /\t/g' %" 
