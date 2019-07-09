@@ -28,11 +28,11 @@ call plug#begin('~/.vim/plugged')
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim'
 Plug 'w0rp/ale'
 Plug 'leafgarland/typescript-vim'
 Plug 'plytophogy/vim-virtualenv'
-Plug 'majutsushi/tagbar'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 let g:ale_fixers = {
@@ -45,16 +45,24 @@ let g:ale_fixers = {
 " let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1
 
+" VIM Jedi
+let g:jedi#force_py_version = 3 
+set completeopt-=preview                        " Don't show preview popup
+
+" coc.nvim
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
 autocmd VimEnter * NERDTree | wincmd p
 " AUTOCOMPLETION
-filetype plugin on
-set omnifunc=syntaxcomplete#Complete
+" filetype plugin on
+" set omnifunc=syntaxcomplete#Complete
 
 " Toggle NERDtreeview
 nnoremap <silent> <Space> :NERDTreeToggle <CR>
 
 " Toggle tagbar
-nmap <F8> :TagbarToggle<CR>
+" nmap <F8> :TagbarToggle<CR>
 
 " Set working dir to currently opened file
 autocmd BufEnter * silent! lcd %:p:h

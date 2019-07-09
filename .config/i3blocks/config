@@ -42,6 +42,15 @@ signal=8
 interval=30
 label=🧠
 
+[cpu_usage]
+command=cpu_usage
+interval=10
+label=CPU 
+#min_width=CPU: 100.00%
+#T_WARN=50
+#T_CRIT=80
+#DECIMALS=2
+
 [cpu]
 interval=15
 label=💻
