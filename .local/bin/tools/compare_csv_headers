@@ -1,0 +1,16 @@
+#!/bin/bash
+
+ARG=$1
+
+if [[ -d $ARG ]]; then
+    echo "$ARG is a directory"
+    for file in $ARG/*.csv; do
+	head -n1 $file | tr ',' '\n'
+	done
+elif [[ -f $ARG ]]; then
+	head -n1 $ARG | tr ',' '\n'
+else
+    echo "$ARG is not valid"
+    exit 1
+fi
+
