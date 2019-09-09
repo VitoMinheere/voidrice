@@ -4,7 +4,7 @@ set ignorecase              " Do case insensitive matching
 set hlsearch                " highlight search results
 set tabstop=4               " number of columns occupied by a tab character
 set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
-set noexpandtab               " converts tabs to white space
+set expandtab             " converts tabs to white space
 set shiftwidth=4            " width for autoindents
 set autoindent              " indent a new line the same amount as the line just typed
 set number relativenumber   " add relative line numbers
@@ -24,7 +24,7 @@ colorscheme badwolf
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -38,15 +38,15 @@ call plug#end()
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
-\   'typescript': ['eslint'],
-\   'python': ['autopep8']
+\   'typescript': [],
+\   'python': ['autopep8', 'remove_trailing_lines', 'trim_whitespace']
 \}
 " Set this variable to 1 to fix files when you save them.
 " let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1
 
 " VIM Jedi
-let g:jedi#force_py_version = 3 
+let g:jedi#force_py_version = 3
 set completeopt-=preview                        " Don't show preview popup
 
 " coc.nvim
@@ -79,4 +79,14 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
 " Add custom Commands
-command Respace execute "!sed -i 's/        /\t/g' %" 
+command Respace execute "!sed -i 's/        /\t/g' %"
+
+" Python settings
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
