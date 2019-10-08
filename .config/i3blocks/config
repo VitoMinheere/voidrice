@@ -7,36 +7,10 @@ command=cat /tmp/recordingicon
 interval=once
 signal=9
 
-#[music]
-#label=🎼
-#interval=once
-#signal=11
-
-#[news]
-#label=📰
-#interval=once
-#signal=6
-
-#[iplocate]
-#interval=30
-
 [pacpackages]
 label=📦
 interval=once
-signal=8
-
-#[torrent]
-#interval=20
-#signal=7
-
-#[weather]
-#interval=18000
-#signal=5
-
-#[mailbox]
-#label=📬
-#interval=180
-#signal=12
+signal=7
 
 [memory]
 interval=30
@@ -45,11 +19,7 @@ label=🧠
 [cpu_usage]
 command=cpu_usage
 interval=10
-label=CPU 
-#min_width=CPU: 100.00%
-#T_WARN=50
-#T_CRIT=80
-#DECIMALS=2
+label=CPU
 
 [cpu]
 interval=15
@@ -58,10 +28,6 @@ label=💻
 [volume]
 interval=once
 signal=10
-
-#[disk]
-#interval=60
-#command=disk /
 
 [disk]
 interval=60
@@ -77,6 +43,3 @@ interval=30
 
 [internet]
 interval=10
-
-[help]
-interval=once

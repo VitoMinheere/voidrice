@@ -11,7 +11,7 @@ export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput se
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
 # Save current working dir
-PROMPT_COMMAND='pwd > "${HOME}/.cwd" && find_git_branch'
+PROMPT_COMMAND='pwd > "${HOME}/.cwd" && find_git_branch; history -a'
 # Change to saved working dir on load
 [[ -f "${HOME}/.cwd" ]] && cd "$(< ${HOME}/.cwd)"
 
@@ -31,3 +31,7 @@ fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Dart stagehand
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+

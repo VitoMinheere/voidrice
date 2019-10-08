@@ -33,6 +33,7 @@ Plug 'w0rp/ale'
 Plug 'leafgarland/typescript-vim'
 Plug 'plytophogy/vim-virtualenv'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dart-lang/dart-vim-plugin'
 call plug#end()
 
 let g:ale_fixers = {
