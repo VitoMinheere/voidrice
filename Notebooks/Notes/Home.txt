@@ -8,3 +8,5 @@ Created Tuesday 29 October 2019
 [[:Training]]
 
 [[:Goals]]
+
+[[:Projects]]
