@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-10-29T17:52:33+01:00
+
+====== Hackintosh ======
+Created Tuesday 29 October 2019
+
+===== T440p =====
+https://github.com/evy0311/t440p-hackintosh
+
