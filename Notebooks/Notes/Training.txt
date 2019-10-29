@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-10-29T09:07:15+01:00
+
+====== Training ======
+Created Tuesday 29 October 2019
+
+#Powerlifting
+[[:Training:Powerlifting]]
+
+
+#Calisthenics
+[[:Training:Calisthenics]]
