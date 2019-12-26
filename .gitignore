@@ -4,10 +4,15 @@
 /Pictures
 /Downloads
 /google-cloud-sdk
+Notebooks
+
 .local/share
 *.log
 .cache
 .ssh
+.ssh-agent-thing
+.bash_history
+.config/chromium/
 
 .vim/plugged
 .config/nvim/plugged
