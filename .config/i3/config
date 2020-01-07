@@ -210,3 +210,4 @@ bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
 # Touchpad controls
 bindsym XF86TouchpadToggle exec ~/.config/scripts/toggletouchpad.sh # toggle touchpad
 exec_always --no-startup-id notify-send -i ~/.scripts/larbs.png 'Welcome to LARBS:' 'Press Super+F1 for the manual.' -t 10000
+exec_always --no-startup-id notify-send -i ~/.scripts/larbs.png 'Welcome to LARBS:' 'Press Super+F1 for the manual.' -t 10000

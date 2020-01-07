@@ -26,11 +26,14 @@ alias ka="killall" \
 	lsp="pacman -Qett --color=always | less" \
 	ffmpeg="ffmpeg -hide_banner" \
 	src="source venv/bin/activate" \
-	fixscroll="~/.config/scripts/fixscroll.sh" \
 	dev=". ~/.config/scripts/listprojects.sh" \
-	comparecsv=". ~/.config/scripts/compare_csv_headers"
+	ll="ls -al"
 
-# Keep vim and nvim seperate
-#command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
+# GIT aliases
+alias gs="git status" \
+alias gp='git pull'
+
+# Stop after sending count ECHO_REQUEST packets #
+alias ping='ping -c 5'
 
 vf() { fzf | xargs -r -I % $EDITOR % ;}
