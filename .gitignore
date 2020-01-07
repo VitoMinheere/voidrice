@@ -1,24 +1,47 @@
-# Dirs to ignore
-/Developer
-/Documents
-/Music
-/Pictures
-/Downloads
-/google-cloud-sdk
-Notebooks
+# Just ignore everything
+*
 
+# Except
+!.bashrc
+!.Xauthority
+!.profile
+!.taskrc
+!.vimifno
+!.vimrc
+!.xbindkeysrc
+!.xinitrc
+!.xprofile
+!.zprofile
 
-.local/share
-*.log
-.cache
-.ssh
-.ssh-agent-thing
-.bash_history
-.psql_history
-.python_history
-.bigqueryrc
-
-# configs to ignore
-.config/chromium/
-.vim/plugged
-.config/nvim/plugged
+# Configs
+!.config/calcurse
+!.config/dunst
+!.config/fontconfig
+!.config/getkeys
+!.config/gtk-2.0
+!.config/gtk-3.0
+!.config/i3
+!.config/i3blocks
+!.config/light
+!.config/mpd
+!.config/mpv
+!.config/ncmpcpp
+!.config/nvim
+!.config/pulse
+!.config/ranger
+!.config/scripts
+!.config/sxhkd
+!.config/sxiv/exec
+!.config/vifm
+!.config/vim
+!.config/zathura
+!.config/zim
+!.config/aliasrc
+!.config/bmdirs
+!.config/bmfiles
+!.config/emoji
+!.config/fontawesome
+!.config/mimeapps.list
+!.config/shortcutrc
+!.config/user-dirs.dirs
+!.config/wall.png
