@@ -1,3 +1,4 @@
+# Dirs to ignore
 /Developer
 /Documents
 /Music
@@ -6,13 +7,18 @@
 /google-cloud-sdk
 Notebooks
 
+
 .local/share
 *.log
 .cache
 .ssh
 .ssh-agent-thing
 .bash_history
-.config/chromium/
+.psql_history
+.python_history
+.bigqueryrc
 
+# configs to ignore
+.config/chromium/
 .vim/plugged
 .config/nvim/plugged
