@@ -1,4 +1,9 @@
 #!/bin/sh
+
+# Add dev shortcuts. Not to be put in git repo
+export DEVALIAS=~/.config/dev_aliasrc
+test -f $DEVALIAS && source $DEVALIAS
+
 alias ka="killall" \
 	mkd="mkdir -pv" \
 	mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)" \
@@ -27,13 +32,34 @@ alias ka="killall" \
 	ffmpeg="ffmpeg -hide_banner" \
 	src="source venv/bin/activate" \
 	dev=". ~/.config/scripts/listprojects.sh" \
-	ll="ls -al"
+	ll="ls -al" \
+	lsd='ls -l | grep "^d"' # List only directories
 
 # GIT aliases
-alias gs="git status" \
+alias gs="git status"
 alias gp='git pull'
+alias cg='cd `git rev-parse --show-toplevel`' # Go to top level in git project directory
+alias ga="git add"
+alias gc="git commit -m"
+alias gb="git branch"
 
 # Stop after sending count ECHO_REQUEST packets #
 alias ping='ping -c 5'
+
+# cd into directory and run ls
+cl() {
+	local dir="$1"
+	local dir="${dir:=$HOME}"
+	if [[ -d "$dir" ]]; then
+		cd "$dir" >/dev/null; ls -hal --color=auto
+	else
+		echo "bash: cl: $dir: Directory not found"
+	fi
+}
+
+# Download all posts from a WP blog
+dw-blog() {
+	wget      --recursive   --mirror   --no-clobber      --exclude-directories=category,author,comments,feed,tag,feed,wp-content,wp-json,newsletter            --html-extension      --convert-links      --domains $1      --no-parent $1
+}
 
 vf() { fzf | xargs -r -I % $EDITOR % ;}
