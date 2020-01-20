@@ -35,3 +35,7 @@ export NVM_DIR="$HOME/.nvm"
 # Dart stagehand
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
+# Flutter
+export PATH="$PATH":"/opt/flutter/bin";
+# Android studio
+export ANDROID_HOME="/opt/android-studio/bin/";
