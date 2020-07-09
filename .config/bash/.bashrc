@@ -1,5 +1,5 @@
 #!/bin/bash
-export GITAWAREPROMPT=~/.bash/git-aware-prompt
+export GITAWAREPROMPT=$HOME/.config/bash/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"
 
 stty -ixon # Disable ctrl-s and ctrl-q.
