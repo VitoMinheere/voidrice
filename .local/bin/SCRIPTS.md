@@ -15,6 +15,7 @@ For modules used in i3blocks.
 - `battery` -- i3blocks module. Shows available power remaining with icon indicating battery status. Colors indicate different levels of charge.
 - `clock` -- Shows time and date. If clicked, brings up calender or coming calcuse events.
 - `cpu` -- Shows CPU temperature. If clicked, shows most processor-intensive processes.
+- `cpu-usage` -- Shows CPU usage in percentage.
 - `help` -- Module which appears as a question mark. Brings up readme if clicked.
 - `internet` -- Shows whether machine is connected to wifi and ethernet. If clicked, brings up `nmtui`.
 - `mailbox` -- i3blocks module for use with mutt-wizard. Shows unread mail and if `mailsync.sh` is running.
@@ -26,7 +27,6 @@ For modules used in i3blocks.
 - `popupgrade` -- Called by clicking on the update icon if there are new packages. Spawns a `yay` upgrade of the main Arch repos and AUR packages, updates the i3blocks module once complete.
 - `torrent` -- i3blocks module. Shows torrents idle (⌛️), downloading (⬇️) or finished (🌱).
 - `volume` -- i3blocks module. Shows volume percentage or mute notification.
-- `weather` -- i3blocks module. Gets weather forcast from wttr.in and returns today's precipitation chance (☔), daily low (❄️) and daily high (☀️).
 
 ## `cron/`
 
@@ -35,7 +35,6 @@ For scripts meant to be cronjobs. None are active by default on LARBS.
 - `checkup` -- If connected to internet, syncs package repositories and downloads (but does not install) any potential updates. Gives `notify-send` notifications of when it is active since other `pacman` install commands cannot be run simultaneously. You may need to grant your user the ability to run `pacman -Syyuw --noconfirm` without a password (done in `/etc/sudoers`).
 - `cronbat` -- Gives a dunst notification if the battery is less than 25%.
 - `crontog` -- Not actually a cronjob, but just turns off/on all user cronjobs.
-- `getforecast` -- Updates the weather forecast. This is automatically run by `weather` if there hasn't been a new forecast today.
 - `newsup` -- Updates newsboat RSS feeds if connected to internet. Will also display a newspaper update icon on i3blocks if it has not be user disabled.
 
 ## `tools/`
@@ -74,7 +73,6 @@ user-interface actions or involve dmenu.
 - `dmenuumount` -- Unmount a mounted non-essential partition. Bound to `mod+F10`. Will do nothing if none are mounted. It will not try to unmount essential system partitions.
 - `dmenuunicode` -- Shows a searchable dmenu prompt of emoji characters. The selected emoji is copied to the system clipboard, while its character code is copied to primary selection (middle mouse button).
 - `dropdowncalc` -- The dropdown calculator script called by `ddspawn` and bound to `mod+a` by default. Will run an R calculator if installed, otherwise python.
-- `ducksearch` -- Show a dmenu prompt and search for the inputed text in DuckDuckGo. Can take bangtags as expected, i.e. typing in `!aw Arch Linux` will search the Arch Wiki for "Arch Linux" or `!yt Luke Smith` will search YouTube for "Luke Smith", etc.
 - `i3resize` -- A script that allows intuitive resizing of windows. Mapped to `mod+Y/U/I/O`.
 - `killrecording` -- End a recording started by `dmenurecord` the proper way without file trucation or lingering background processes, mapped to `mod+Delete` by default.
 - `lockscreen` -- The screen locker. Gives a confirm prompt and if user says yes, all audio will be paused and the screen will be distorted and locked and screen will soon time out. User must insert password to unlock. Mapped to `mod+x` by default.
@@ -84,4 +82,3 @@ user-interface actions or involve dmenu.
 - `td-toggle` -- Gives a dmenu prompt to start `transmission-daemon` if not running, or the kill it if it is. Obviously you need `transmission-cli` installed for this to work.  Mapped to `mod+F7` by default.
 - `tmuxdd` -- The startup script for the dropdown terminal (toggleable with `mod+u`). Either attaches to an existing tmux session or begins a new one.
 - `toggletouchpad` -- As the name suggests, turns off TouchPad if on, and turns it on if off. Requires `xf86-input-synaptics`. If your laptop has a special button for this, it will be mapped by default.
-- `tutorialvids` -- A dmenu prompt that gives some options of tutorial videos to watch. Bound to `mod+shift+e`.
