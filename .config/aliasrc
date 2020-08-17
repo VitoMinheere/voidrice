@@ -26,7 +26,7 @@ alias ka="killall" \
 	lsp="pacman -Qett --color=always | less" \
 	ffmpeg="ffmpeg -hide_banner" \
 	src="source venv/bin/activate" \
-	dev=". ~/.local/bin/tools/listprojects.sh" \
+	dev=". ~/.local/bin/tools/listprojects" \
 	ll="ls -al" \
 	lsd='ls -l | grep "^d"' # List only directories
 
