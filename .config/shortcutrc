@@ -1,0 +1,5 @@
+#!/bin/sh
+
+alias h="cd ~" \
+	d="cd ~/Documents/" \
+	D="cd ~/Downloads/" \
