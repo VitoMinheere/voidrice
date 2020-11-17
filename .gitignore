@@ -32,10 +32,7 @@
 !.config/scripts
 !.config/sxhkd
 !.config/sxiv/exec
-!.config/vifm
-!.config/vim
 !.config/zathura
-!.config/zim
 !.config/aliasrc
 !.config/bmdirs
 !.config/bmfiles

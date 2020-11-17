@@ -21,6 +21,14 @@ set hlsearch                " highlight matches
 
 colorscheme badwolf
 
+" Movement
+
+" Easier splits navigation by Ctrl + hjkl
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
@@ -34,6 +42,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'plytophogy/vim-virtualenv'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'vimwiki/vimwiki'
 call plug#end()
 
 let g:ale_fixers = {
