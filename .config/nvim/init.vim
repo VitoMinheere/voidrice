@@ -11,7 +11,7 @@ set cursorline              " highlight current line
 set lazyredraw              " redraw only when needed
 set noswapfile              " Remove swap file usage
 
-colorscheme badwolf
+colorscheme wombat256
 filetype indent on          " load filetype file from ~/.vim/indent/{filetype}
 
 " Spell-check set to <leader>o, 'o' for 'orthography':
@@ -25,8 +25,6 @@ set splitbelow splitright
 
 " Automatically deletes all trailing whitespace on save.
 autocmd BufWritePre * %s/\s\+$//e
-
-
 
 " Movement
 " Easier splits navigation by Ctrl + hjkl
@@ -42,7 +40,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'davidhalter/jedi-vim'
 Plug 'w0rp/ale'
 Plug 'plytophogy/vim-virtualenv'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -50,6 +47,7 @@ Plug 'dart-lang/dart-vim-plugin'
 Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 let g:ale_fixers = {
@@ -62,18 +60,14 @@ let g:ale_fixers = {
 " let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1
 
-" VIM Jedi
-let g:jedi#force_py_version = 3
-set completeopt-=preview                        " Don't show preview popup
-
 " coc.nvim
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
 autocmd VimEnter * NERDTree | wincmd p
 " AUTOCOMPLETION
-" filetype plugin on
-" set omnifunc=syntaxcomplete#Complete
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
 
 " Toggle NERDtreeview
 nnoremap <silent> <Space> :NERDTreeToggle <CR>
@@ -108,22 +102,20 @@ au BufNewFile,BufRead *.py
     \ set autoindent |
     \ set fileformat=unix
 
-
-
 "MARKDOWN
-        autocmd Filetype markdown,rmd map <leader>w yiWi[<esc>Ea](<esc>pa)
-        autocmd Filetype markdown,rmd inoremap ,n ---<Enter><Enter>
-        autocmd Filetype markdown,rmd inoremap ,b ****<++><Esc>F*hi
-        autocmd Filetype markdown,rmd inoremap ,s ~~~~<++><Esc>F~hi
-        autocmd Filetype markdown,rmd inoremap ,e **<++><Esc>F*i
-        autocmd Filetype markdown,rmd inoremap ,h ====<Space><++><Esc>F=hi
-        autocmd Filetype markdown,rmd inoremap ,i ![](<++>)<++><Esc>F[a
-        autocmd Filetype markdown,rmd inoremap ,a [](<++>)<++><Esc>F[a
-        autocmd Filetype markdown,rmd inoremap ,1 #<Space><Enter><++><Esc>kA
-        autocmd Filetype markdown,rmd inoremap ,2 ##<Space><Enter><++><Esc>kA
-        autocmd Filetype markdown,rmd inoremap ,3 ###<Space><Enter><++><Esc>kA
-        autocmd Filetype markdown,rmd inoremap ,l --------<Enter>
-        autocmd Filetype rmd inoremap ,r ```{r}<CR>```<CR><CR><esc>2kO
-        autocmd Filetype rmd inoremap ,p ```{python}<CR>```<CR><CR><esc>2kO
-        autocmd Filetype rmd inoremap ,c ```<cr>```<cr><cr><esc>2kO
+	autocmd Filetype markdown,rmd map <leader>w yiWi[<esc>Ea](<esc>pa)
+	autocmd Filetype markdown,rmd inoremap ,n ---<Enter><Enter>
+	autocmd Filetype markdown,rmd inoremap ,b ****<++><Esc>F*hi
+	autocmd Filetype markdown,rmd inoremap ,s ~~~~<++><Esc>F~hi
+	autocmd Filetype markdown,rmd inoremap ,e **<++><Esc>F*i
+	autocmd Filetype markdown,rmd inoremap ,h ====<Space><++><Esc>F=hi
+	autocmd Filetype markdown,rmd inoremap ,i ![](<++>)<++><Esc>F[a
+	autocmd Filetype markdown,rmd inoremap ,a [](<++>)<++><Esc>F[a
+	autocmd Filetype markdown,rmd inoremap ,1 #<Space><Enter><++><Esc>kA
+	autocmd Filetype markdown,rmd inoremap ,2 ##<Space><Enter><++><Esc>kA
+	autocmd Filetype markdown,rmd inoremap ,3 ###<Space><Enter><++><Esc>kA
+	autocmd Filetype markdown,rmd inoremap ,l --------<Enter>
+	autocmd Filetype rmd inoremap ,r ```{r}<CR>```<CR><CR><esc>2kO
+	autocmd Filetype rmd inoremap ,p ```{python}<CR>```<CR><CR><esc>2kO
+	autocmd Filetype rmd inoremap ,c ```<cr>```<cr><cr><esc>2kO
 
