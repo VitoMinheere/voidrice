@@ -5,7 +5,7 @@
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="chromium"
+export BROWSER="icecat"
 export READER="zathura"
 export FILE="lf"
 export BIB="$HOME/Documents/LaTeX/uni.bib"
