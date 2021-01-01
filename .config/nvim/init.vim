@@ -108,6 +108,7 @@ au BufNewFile,BufRead *.py
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
     \ set colorcolumn=80 |
+    \ highlight ColorColumn ctermbg=7 |
     \ set textwidth=79 |
     \ set expandtab |
     \ set autoindent |
