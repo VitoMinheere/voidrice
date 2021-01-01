@@ -20,6 +20,7 @@ set cursorline              " highlight current line
 set lazyredraw              " redraw only when needed
 set noswapfile              " Remove swap file usage
 
+syntax enable
 colorscheme wombat256
 filetype indent on          " load filetype file from ~/.vim/indent/{filetype}
 
