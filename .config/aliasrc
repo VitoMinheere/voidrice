@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# Add dev shortcuts. Are work specific so won't be put in git repo
-export DEVALIAS=~/.config/dev_aliasrc
-test -f $DEVALIAS && source $DEVALIAS
-
 alias ka="killall" \
 	mkd="mkdir -pv" \
 	p="sudo pacman" \
@@ -41,6 +37,9 @@ alias gpu="git push"
 alias gsync="git pull origin develop"
 alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
 
+# Python aliases
+alias pir="pip -r requirements.txt" \
+    venv="python -m venv venv && src"
 
 # Stop after sending count ECHO_REQUEST packets #
 alias ping='ping -c 5'

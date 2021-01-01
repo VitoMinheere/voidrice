@@ -24,10 +24,8 @@ fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
 # Dart stagehand
 export PATH="$PATH":"$HOME/.pub-cache/bin"
-
 # Flutter
 export PATH="$PATH":"/opt/flutter/bin";
 # Android studio
