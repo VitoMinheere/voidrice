@@ -1,121 +1,148 @@
-set nocompatible            " Disable compatibility to old-time vi
-set showmatch               " Show matching brackets.
-set ignorecase              " Do case insensitive matching
-set tabstop=4               " number of columns occupied by a tab character
-set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
-set expandtab             " converts tabs to white space
-set shiftwidth=4            " width for autoindents
-set number relativenumber   " add relative line numbers
-set wildmode=longest,list   " get bash-like tab completions
-set cursorline              " highlight current line
-set lazyredraw              " redraw only when needed
-set noswapfile              " Remove swap file usage
+let mapleader =","
 
-colorscheme wombat256
-filetype indent on          " load filetype file from ~/.vim/indent/{filetype}
+if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
+	echo "Downloading junegunn/vim-plug to manage plugins..."
+	silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
+	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
+	autocmd VimEnter * PlugInstall
+endif
 
-" Spell-check set to <leader>o, 'o' for 'orthography':
-map <leader>o :setlocal spell! spelllang=en_us<CR>
-
-" Run shellcheck
-map <leader>s :!clear && shellcheck %<CR>
-
-" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
-set splitbelow splitright
-
-" Automatically deletes all trailing whitespace on save.
-autocmd BufWritePre * %s/\s\+$//e
-
-" Movement
-" Easier splits navigation by Ctrl + hjkl
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" Specify a directory for plugins
-" - For Neovim: ~/.local/share/nvim/plugged
-" - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.config/nvim/plugged')
-
-" On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'w0rp/ale'
-Plug 'plytophogy/vim-virtualenv'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'vimwiki/vimwiki'
-Plug 'tpope/vim-commentary'
+call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'tpope/vim-surround'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'preservim/nerdtree'
+Plug 'junegunn/goyo.vim'
+Plug 'jreybert/vimagit'
+Plug 'lukesmithxyz/vimling'
+Plug 'vimwiki/vimwiki'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-commentary'
+Plug 'ap/vim-css-color'
 call plug#end()
 
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint'],
-\   'typescript': [],
-\   'python': ['autopep8', 'remove_trailing_lines', 'trim_whitespace']
-\}
-" Set this variable to 1 to fix files when you save them.
-" let g:ale_fix_on_save = 1
-let g:ale_sign_column_always = 1
+set title
+set bg=light
+set go=a
+set mouse=a
+set nohlsearch
+set clipboard+=unnamedplus
+set noshowmode
+set noruler
+set laststatus=0
+set noshowcmd
 
-" coc.nvim
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+" Some basics:
+	nnoremap c "_c
+	set nocompatible
+	filetype plugin on
+	syntax on
+	set encoding=utf-8
+	set number relativenumber
+" Enable autocompletion:
+	set wildmode=longest,list,full
+" Disables automatic commenting on newline:
+	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" Perform dot commands over visual blocks:
+	vnoremap . :normal .<CR>
+" Goyo plugin makes text more readable when writing prose:
+	map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
+" Spell-check set to <leader>o, 'o' for 'orthography':
+	map <leader>o :setlocal spell! spelllang=en_us<CR>
+" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
+	set splitbelow splitright
 
-autocmd VimEnter * NERDTree | wincmd p
-" AUTOCOMPLETION
-filetype plugin on
-set omnifunc=syntaxcomplete#Complete
+" Nerd tree
+	map <leader>n :NERDTreeToggle<CR>
+	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+    if has('nvim')
+        let NERDTreeBookmarksFile = stdpath('data') . '/NERDTreeBookmarks'
+    else
+        let NERDTreeBookmarksFile = '~/.vim' . '/NERDTreeBookmarks'
+    endif
 
-" Toggle NERDtreeview
-nnoremap <silent> <Space> :NERDTreeToggle <CR>
+" vimling:
+	nm <leader><leader>d :call ToggleDeadKeys()<CR>
+	imap <leader><leader>d <esc>:call ToggleDeadKeys()<CR>a
+	nm <leader><leader>i :call ToggleIPA()<CR>
+	imap <leader><leader>i <esc>:call ToggleIPA()<CR>a
+	nm <leader><leader>q :call ToggleProse()<CR>
 
-" Toggle tagbar
-" nmap <F8> :TagbarToggle<CR>
+" Shortcutting split navigation, saving a keypress:
+	map <C-h> <C-w>h
+	map <C-j> <C-w>j
+	map <C-k> <C-w>k
+	map <C-l> <C-w>l
 
-" Set working dir to currently opened file
-autocmd BufEnter * silent! lcd %:p:h
+" Replace ex mode with gq
+	map Q gq
 
-" " Copy to clipboard
-vnoremap  <leader>y  "+y
-nnoremap  <leader>Y  "+yg_
-nnoremap  <leader>y  "+y
+" Check file in shellcheck:
+	map <leader>s :!clear && shellcheck -x %<CR>
 
-" " Paste from clipboard
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
-vnoremap <leader>p "+p
-vnoremap <leader>P "+P
+" Open my bibliography file in split
+	map <leader>b :vsp<space>$BIB<CR>
+	map <leader>r :vsp<space>$REFER<CR>
 
-" Add custom Commands
-command Respace execute "!sed -i 's/        /\t/g' %"
+" Replace all is aliased to S.
+	nnoremap S :%s//g<Left><Left>
 
-" Python settings
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix
+" Compile document, be it groff/LaTeX/markdown/etc.
+	map <leader>c :w! \| !compiler "<c-r>%"<CR>
 
-"MARKDOWN
-	autocmd Filetype markdown,rmd map <leader>w yiWi[<esc>Ea](<esc>pa)
-	autocmd Filetype markdown,rmd inoremap ,n ---<Enter><Enter>
-	autocmd Filetype markdown,rmd inoremap ,b ****<++><Esc>F*hi
-	autocmd Filetype markdown,rmd inoremap ,s ~~~~<++><Esc>F~hi
-	autocmd Filetype markdown,rmd inoremap ,e **<++><Esc>F*i
-	autocmd Filetype markdown,rmd inoremap ,h ====<Space><++><Esc>F=hi
-	autocmd Filetype markdown,rmd inoremap ,i ![](<++>)<++><Esc>F[a
-	autocmd Filetype markdown,rmd inoremap ,a [](<++>)<++><Esc>F[a
-	autocmd Filetype markdown,rmd inoremap ,1 #<Space><Enter><++><Esc>kA
-	autocmd Filetype markdown,rmd inoremap ,2 ##<Space><Enter><++><Esc>kA
-	autocmd Filetype markdown,rmd inoremap ,3 ###<Space><Enter><++><Esc>kA
-	autocmd Filetype markdown,rmd inoremap ,l --------<Enter>
-	autocmd Filetype rmd inoremap ,r ```{r}<CR>```<CR><CR><esc>2kO
-	autocmd Filetype rmd inoremap ,p ```{python}<CR>```<CR><CR><esc>2kO
-	autocmd Filetype rmd inoremap ,c ```<cr>```<cr><cr><esc>2kO
+" Open corresponding .pdf/.html or preview
+	map <leader>p :!opout <c-r>%<CR><CR>
 
+" Runs a script that cleans out tex build files whenever I close out of a .tex file.
+	autocmd VimLeave *.tex !texclear %
+
+" Ensure files are read as what I want:
+	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+	map <leader>v :VimwikiIndex
+	let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
+	autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
+	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
+	autocmd BufRead,BufNewFile *.tex set filetype=tex
+
+" Save file as sudo on files that require root permission
+	cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+
+" Enable Goyo by default for mutt writing
+	autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=80
+	autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo | set bg=light
+	autocmd BufRead,BufNewFile /tmp/neomutt* map ZZ :Goyo\|x!<CR>
+	autocmd BufRead,BufNewFile /tmp/neomutt* map ZQ :Goyo\|q!<CR>
+
+" Automatically deletes all trailing whitespace and newlines at end of file on save.
+	autocmd BufWritePre * %s/\s\+$//e
+	autocmd BufWritePre * %s/\n\+\%$//e
+
+" When shortcut files are updated, renew bash and ranger configs with new material:
+	autocmd BufWritePost bm-files,bm-dirs !shortcuts
+" Run xrdb whenever Xdefaults or Xresources are updated.
+	autocmd BufRead,BufNewFile xresources,xdefaults set filetype=xdefaults
+	autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb %
+" Recompile dwmblocks on config edit.
+	autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; sudo make install && { killall -q dwmblocks;setsid -f dwmblocks }
+
+" Turns off highlighting on the bits of code that are changed, so the line that is changed is highlighted but the actual text that has changed stands out on the line and is readable.
+if &diff
+    highlight! link DiffText MatchParen
+endif
+
+" Function for toggling the bottom statusbar:
+let s:hidden_all = 1
+function! ToggleHiddenAll()
+    if s:hidden_all  == 0
+        let s:hidden_all = 1
+        set noshowmode
+        set noruler
+        set laststatus=0
+        set noshowcmd
+    else
+        let s:hidden_all = 0
+        set showmode
+        set ruler
+        set laststatus=2
+        set showcmd
+    endif
+endfunction
+nnoremap <leader>h :call ToggleHiddenAll()<CR>
