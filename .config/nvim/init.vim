@@ -1,4 +1,4 @@
-let mapleader =","
+let mapleader=","
 
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."
@@ -6,6 +6,23 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
 	autocmd VimEnter * PlugInstall
 endif
+
+set nocompatible            " Disable compatibility to old-time vi
+set showmatch               " Show matching brackets.
+set ignorecase              " Do case insensitive matching
+set tabstop=4               " number of columns occupied by a tab character
+set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
+set expandtab             " converts tabs to white space
+set shiftwidth=4            " width for autoindents
+set number relativenumber   " add relative line numbers
+set wildmode=longest,list   " get bash-like tab completions
+set cursorline              " highlight current line
+set lazyredraw              " redraw only when needed
+set noswapfile              " Remove swap file usage
+
+syntax enable
+colorscheme wombat256
+filetype indent on          " load filetype file from ~/.vim/indent/{filetype}
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'tpope/vim-surround'
@@ -145,4 +162,75 @@ function! ToggleHiddenAll()
         set showcmd
     endif
 endfunction
+
 nnoremap <leader>h :call ToggleHiddenAll()<CR>
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\   'typescript': [],
+\   'python': ['autopep8', 'remove_trailing_lines', 'trim_whitespace']
+\}
+" Set this variable to 1 to fix files when you save them.
+" let g:ale_fix_on_save = 1
+let g:ale_sign_column_always = 1
+
+" coc.nvim
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+autocmd VimEnter * NERDTree | wincmd p
+" AUTOCOMPLETION
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
+" Toggle NERDtreeview
+nnoremap <silent> <Space> :NERDTreeToggle <CR>
+
+" Toggle tagbar
+" nmap <F8> :TagbarToggle<CR>
+
+" Set working dir to currently opened file
+autocmd BufEnter * silent! lcd %:p:h
+
+" " Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+
+" " Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+
+" Add custom Commands
+command Respace execute "!sed -i 's/        /\t/g' %"
+
+" Python settings
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set colorcolumn=80 |
+    \ highlight ColorColumn ctermbg=7 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+
+"MARKDOWN
+	autocmd Filetype markdown,rmd map <leader>w yiWi[<esc>Ea](<esc>pa)
+	autocmd Filetype markdown,rmd inoremap ,n ---<Enter><Enter>
+	autocmd Filetype markdown,rmd inoremap ,b ****<++><Esc>F*hi
+	autocmd Filetype markdown,rmd inoremap ,s ~~~~<++><Esc>F~hi
+	autocmd Filetype markdown,rmd inoremap ,e **<++><Esc>F*i
+	autocmd Filetype markdown,rmd inoremap ,h ====<Space><++><Esc>F=hi
+	autocmd Filetype markdown,rmd inoremap ,i ![](<++>)<++><Esc>F[a
+	autocmd Filetype markdown,rmd inoremap ,a [](<++>)<++><Esc>F[a
+	autocmd Filetype markdown,rmd inoremap ,1 #<Space><Enter><++><Esc>kA
+	autocmd Filetype markdown,rmd inoremap ,2 ##<Space><Enter><++><Esc>kA
+	autocmd Filetype markdown,rmd inoremap ,3 ###<Space><Enter><++><Esc>kA
+	autocmd Filetype markdown,rmd inoremap ,l --------<Enter>
+	autocmd Filetype rmd inoremap ,r ```{r}<CR>```<CR><CR><esc>2kO
+	autocmd Filetype rmd inoremap ,p ```{python}<CR>```<CR><CR><esc>2kO
+	autocmd Filetype rmd inoremap ,c ```<cr>```<cr><cr><esc>2kO

@@ -11,7 +11,7 @@ alias \
 	mkd="mkdir -pv" \
 	yt="youtube-dl --add-metadata -i" \
 	yta="yt -x -f bestaudio/best" \
-	ffmpeg="ffmpeg -hide_banner"
+	ffmpeg="ffmpeg -hide_banner" \
 
 # Colorize commands when possible.
 alias \
@@ -34,10 +34,31 @@ alias \
 	xi="sudo xbps-install" \
 	xr="sudo xbps-remove -R" \
 	xq="xbps-query" \
-	z="zathura"
+	z="zathura" \
+	mkd="mkdir -pv" \
+	ll="ls -al" \
+	src="source venv/bin/activate" \
+	dev=". ~/.local/bin/tools/listprojects"
 
 alias \
 	magit="nvim -c MagitOnly" \
 	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" \
 	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
 	tmux="tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf" \
+
+# Git alias
+alias \
+    gs="git status" \
+    gp='git pull' \
+    cg='cd `git rev-parse --show-toplevel`' \ # Go to top level in git project directory
+    ga="git add" \
+    gc="git commit -m" \
+    gb="git branch" \
+    gpu="git push" \
+    gsync="git pull origin develop" \
+    gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
+
+# Python alias
+alias \
+    pir="pip -r requirements.txt" \
+    venv="python -m venv venv && src"
