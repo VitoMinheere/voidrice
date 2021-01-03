@@ -3,15 +3,11 @@
 
 # Except
 !.bashrc
-!.Xauthority
 !.profile
-!.taskrc
-!.vimifno
 !.vimrc
 !.xbindkeysrc
 !.xinitrc
 !.xprofile
-!.zprofile
 
 # Configs
 !.config/calcurse
@@ -28,7 +24,7 @@
 !.config/ncmpcpp
 !.config/nvim
 !.config/pulse
-!.config/ranger
+!.config/lf
 !.config/scripts
 !.config/sxhkd
 !.config/sxiv/exec
@@ -38,7 +34,6 @@
 !.config/bmfiles
 !.config/emoji
 !.config/fontawesome
-!.config/mimeapps.list
 !.config/shortcutrc
 !.config/user-dirs.dirs
 !.config/wall.png
