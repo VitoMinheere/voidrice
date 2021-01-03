@@ -31,6 +31,10 @@ signal=10
 
 [disk]
 interval=60
+command=disk / 💽
+
+[disk]
+interval=60
 command=disk /home 🏠
 
 [battery]
