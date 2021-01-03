@@ -42,12 +42,12 @@ alias \
 
 # Python aliases
 alias \
-    pir="pip -r requirements.txt" \
+    pir="pip install -r requirements.txt" \
     venv="python -m venv venv && src"
 
 
 # Download all posts from a WP blog
-dw-blog() {
+dwblog() {
 	wget      --recursive   --mirror   --no-clobber      --exclude-directories=category,author,comments,feed,tag,feed,wp-content,wp-json,newsletter            --html-extension      --convert-links      --domains $1      --no-parent $1
 }
 
