@@ -53,18 +53,16 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'w0rp/ale'
 Plug 'plytophogy/vim-virtualenv'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'dart-lang/dart-vim-plugin'
 Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
 \   'typescript': [],
-\   'python': ['autopep8', 'remove_trailing_lines', 'trim_whitespace']
+\   'python': ['flake8', 'autopep8', 'remove_trailing_lines', 'trim_whitespace']
 \}
 " Set this variable to 1 to fix files when you save them.
 " let g:ale_fix_on_save = 1
@@ -101,6 +99,10 @@ vnoremap <leader>P "+P
 
 " Add custom Commands
 command Respace execute "!sed -i 's/        /\t/g' %"
+
+" Programming
+" Hit % on if to jump to else
+runtime macros/matchit.vim
 
 " Python settings
 au BufNewFile,BufRead *.py

@@ -1,0 +1,13 @@
+#!/bin/bash
+branches=()
+eval "$(git for-each-ref --shell --format='branches+=(%(refname:short))' refs/heads/)"
+read -p "$(f=0
+        for branchname in "${branches[@]}"; do
+                echo $((++f)): "$branchname"
+            done
+
+        echo -ne 'Please select a branch to checkout > '
+        )" selection
+
+selected_branch="${branches[$((selection-1))]}"
+git checkout $selected_branch

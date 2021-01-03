@@ -1,0 +1,16 @@
+#!/bin/bash
+dir="$HOME/Developer"
+project_dir="$dir"/"$1"
+
+echo "$project_dir"
+
+# Create directories in project
+dirs=("data" "docs" "code")
+for name in "${dirs[@]}"
+do
+    mkdir -p "$project_dir/$name"
+done
+
+# Add .envrc file
+touch "$project_dir/.envrc"
+

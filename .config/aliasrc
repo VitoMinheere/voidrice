@@ -25,36 +25,26 @@ alias ka="killall" \
 	src="source venv/bin/activate" \
 	dev=". ~/.local/bin/tools/listprojects" \
 	ll="ls -al" \
-	lsd='ls -l | grep "^d"' # List only directories
+	lsd='ls -l | grep "^d"' \
+    ping='ping -c 5'
 
 # GIT aliases
-alias gs="git status"
-alias gp='git pull'
-alias cg='cd `git rev-parse --show-toplevel`' # Go to top level in git project directory
-alias ga="git add"
-alias gc="git commit -m"
-alias gb="git branch"
-alias gpu="git push"
-alias gsync="git pull origin develop"
-alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
+alias \
+    gs="git status" \
+    gp='git pull' \
+    cg='cd `git rev-parse --show-toplevel`' \
+    ga="git add" \
+    gc="git commit -m" \
+    gb=". ~/.local/bin/tools/listbranches" \
+    gpu="git push" \
+    gsync="git pull origin develop" \
+    gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit' \
 
 # Python aliases
-alias pir="pip -r requirements.txt" \
+alias \
+    pir="pip -r requirements.txt" \
     venv="python -m venv venv && src"
 
-# Stop after sending count ECHO_REQUEST packets #
-alias ping='ping -c 5'
-
-# cd into directory and run ls
-cl() {
-	local dir="$1"
-	local dir="${dir:=$HOME}"
-	if [[ -d "$dir" ]]; then
-		cd "$dir" >/dev/null; ls -hal --color=auto
-	else
-		echo "bash: cl: $dir: Directory not found"
-	fi
-}
 
 # Download all posts from a WP blog
 dw-blog() {
@@ -64,30 +54,31 @@ dw-blog() {
 vf() { fzf | xargs -r -I % $EDITOR % ;}
 
 # shortcuts
-alias h="cd ~/ && ls -a" \
-d="cd ~/Documents && ls -a" \
-D="cd ~/Downloads && ls -a" \
-m="cd ~/Music && ls -a" \
-pp="cd ~/Pictures && ls -a" \
-vv="cd ~/Videos && ls -a" \
-cf="cd ~/.config && ls -a" \
-sc="cd ~/.local/bin && ls -a" \
-mn="cd /mnt && ls -a" \
-bf="$EDITOR ~/.config/bmfiles" \
-bd="$EDITOR ~/.config/bmdirs" \
-cfb="$EDITOR ~/.bashrc" \
-cfa="$EDITOR ~/.config/aliasrc" \
-cfz="$EDITOR ~/.config/zathura/zathurarc" \
-cfv="$EDITOR ~/.config/nvim/init.vim" \
-cfi="$EDITOR ~/.config/i3/config" \
-cfm="$EDITOR ~/.config/mutt/muttrc" \
-eb="$EDITOR ~/Documents/LaTeX/uni.bib" \
-cv="$EDITOR ~/Documents/LaTeX/cv.tex" \
-cfd="$EDITOR ~/.Xdefaults" \
-cfu="$EDITOR ~/.config/newsboat/urls" \
-cfn="$EDITOR ~/.config/newsboat/config" \
-cfmb="$EDITOR ~/.config/ncmpcpp/bindings" \
-cfmc="$EDITOR ~/.config/ncmpcpp/config" \
-er="$EDITOR ~/Documents/referbib" \
-cfB="$EDITOR ~/.config/i3blocks/config" \
-cfk="$EDITOR ~/.config/sxhkd/sxhkdrc" \
+alias \
+    h="cd ~/ && ls -a" \
+    d="cd ~/Documents && ls -a" \
+    D="cd ~/Downloads && ls -a" \
+    m="cd ~/Music && ls -a" \
+    pp="cd ~/Pictures && ls -a" \
+    vv="cd ~/Videos && ls -a" \
+    cf="cd ~/.config && ls -a" \
+    sc="cd ~/.local/bin && ls -a" \
+    mn="cd /mnt && ls -a" \
+    bf="$EDITOR ~/.config/bmfiles" \
+    bd="$EDITOR ~/.config/bmdirs" \
+    cfb="$EDITOR ~/.bashrc" \
+    cfa="$EDITOR ~/.config/aliasrc" \
+    cfz="$EDITOR ~/.config/zathura/zathurarc" \
+    cfv="$EDITOR ~/.config/nvim/init.vim" \
+    cfi="$EDITOR ~/.config/i3/config" \
+    cfm="$EDITOR ~/.config/mutt/muttrc" \
+    eb="$EDITOR ~/Documents/LaTeX/uni.bib" \
+    cv="$EDITOR ~/Documents/LaTeX/cv.tex" \
+    cfd="$EDITOR ~/.Xdefaults" \
+    cfu="$EDITOR ~/.config/newsboat/urls" \
+    cfn="$EDITOR ~/.config/newsboat/config" \
+    cfmb="$EDITOR ~/.config/ncmpcpp/bindings" \
+    cfmc="$EDITOR ~/.config/ncmpcpp/config" \
+    er="$EDITOR ~/Documents/referbib" \
+    cfB="$EDITOR ~/.config/i3blocks/config" \
+    cfk="$EDITOR ~/.config/sxhkd/sxhkdrc" \
