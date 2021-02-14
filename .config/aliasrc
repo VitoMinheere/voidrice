@@ -42,7 +42,7 @@ alias \
 
 # Python aliases
 alias \
-    pir="pip -r requirements.txt" \
+    pir="pip install -r requirements.txt" \
     venv="python -m venv venv && src"
 
 

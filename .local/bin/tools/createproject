@@ -14,3 +14,6 @@ done
 # Add .envrc file
 touch "$project_dir/.envrc"
 
+# Add tmux project file
+touch "$project_dir/$name.yaml"
+

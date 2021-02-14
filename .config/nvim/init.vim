@@ -1,10 +1,10 @@
 let mapleader=","
 
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
-	echo "Downloading junegunn/vim-plug to manage plugins..."
-	silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
-	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
-	autocmd VimEnter * PlugInstall
+    echo "Downloading junegunn/vim-plug to manage plugins..."
+    silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
+    silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
+    autocmd VimEnter * PlugInstall
 endif
 
 set nocompatible            " Disable compatibility to old-time vi
@@ -22,7 +22,9 @@ set noswapfile              " Remove swap file usage
 
 syntax enable
 colorscheme wombat256
-filetype indent on          " load filetype file from ~/.vim/indent/{filetype}
+filetype on
+" filetype indent on          " load filetype file from ./indent/{filetype}
+filetype plugin on          " load settings for filetype from ./after/ftplugin/
 
 " Spell-check set to <leader>o, 'o' for 'orthography':
 map <leader>o :setlocal spell! spelllang=en_us<CR>
@@ -49,21 +51,26 @@ nnoremap <C-H> <C-W><C-H>
 call plug#begin('~/.config/nvim/plugged')
 
 " On-demand loading
+" Programming
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'w0rp/ale'
 Plug 'plytophogy/vim-virtualenv'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'vimwiki/vimwiki'
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
+
+" Plug 'vimwiki/vimwiki'
+" Look and feel
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'bling/vim-airline'
 call plug#end()
 
 let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint'],
-\   'typescript': [],
-\   'python': ['flake8', 'autopep8', 'remove_trailing_lines', 'trim_whitespace']
-\}
+            \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+            \   'javascript': ['eslint'],
+            \   'typescript': [],
+            \   'python': ['flake8', 'autopep8', 'pylint']
+            \}
 " Set this variable to 1 to fix files when you save them.
 " let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1
@@ -105,31 +112,28 @@ command Respace execute "!sed -i 's/        /\t/g' %"
 runtime macros/matchit.vim
 
 " Python settings
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set colorcolumn=80 |
-    \ highlight ColorColumn ctermbg=7 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix
+" See after/ftplugin/python.vim
 
 "MARKDOWN
-	autocmd Filetype markdown,rmd map <leader>w yiWi[<esc>Ea](<esc>pa)
-	autocmd Filetype markdown,rmd inoremap ,n ---<Enter><Enter>
-	autocmd Filetype markdown,rmd inoremap ,b ****<++><Esc>F*hi
-	autocmd Filetype markdown,rmd inoremap ,s ~~~~<++><Esc>F~hi
-	autocmd Filetype markdown,rmd inoremap ,e **<++><Esc>F*i
-	autocmd Filetype markdown,rmd inoremap ,h ====<Space><++><Esc>F=hi
-	autocmd Filetype markdown,rmd inoremap ,i ![](<++>)<++><Esc>F[a
-	autocmd Filetype markdown,rmd inoremap ,a [](<++>)<++><Esc>F[a
-	autocmd Filetype markdown,rmd inoremap ,1 #<Space><Enter><++><Esc>kA
-	autocmd Filetype markdown,rmd inoremap ,2 ##<Space><Enter><++><Esc>kA
-	autocmd Filetype markdown,rmd inoremap ,3 ###<Space><Enter><++><Esc>kA
-	autocmd Filetype markdown,rmd inoremap ,l --------<Enter>
-	autocmd Filetype rmd inoremap ,r ```{r}<CR>```<CR><CR><esc>2kO
-	autocmd Filetype rmd inoremap ,p ```{python}<CR>```<CR><CR><esc>2kO
-	autocmd Filetype rmd inoremap ,c ```<cr>```<cr><cr><esc>2kO
+augroup textfiles
+    autocmd!
+    autocmd filetype textfiles :set cc=
+    autocmd filetype markdown :setlocal spell spelllang=en | syntax clear
+    autocmd Filetype markdown,rmd map <leader>w yiWi[<esc>Ea](<esc>pa)
+    autocmd Filetype markdown,rmd inoremap ,n ---<Enter><Enter>
+    autocmd Filetype markdown,rmd inoremap ,b ****<++><Esc>F*hi
+    autocmd Filetype markdown,rmd inoremap ,s ~~~~<++><Esc>F~hi
+    autocmd Filetype markdown,rmd inoremap ,e **<++><Esc>F*i
+    autocmd Filetype markdown,rmd inoremap ,h ====<Space><++><Esc>F=hi
+    autocmd Filetype markdown,rmd inoremap ,i ![](<++>)<++><Esc>F[a
+    autocmd Filetype markdown,rmd inoremap ,a [](<++>)<++><Esc>F[a
+    autocmd Filetype markdown,rmd inoremap ,1 #<Space><Enter><++><Esc>kA
+    autocmd Filetype markdown,rmd inoremap ,2 ##<Space><Enter><++><Esc>kA
+    autocmd Filetype markdown,rmd inoremap ,3 ###<Space><Enter><++><Esc>kA
+    autocmd Filetype markdown,rmd inoremap ,l --------<Enter>
+    autocmd Filetype rmd inoremap ,r ```{r}<CR>```<CR><CR><esc>2kO
+    autocmd Filetype rmd inoremap ,p ```{python}<CR>```<CR><CR><esc>2kO
+    autocmd Filetype rmd inoremap ,c ```<cr>```<cr><cr><esc>2kO
+augroup end
+
 
