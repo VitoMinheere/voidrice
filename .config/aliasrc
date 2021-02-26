@@ -70,6 +70,7 @@ alias \
     cfa="$EDITOR ~/.config/aliasrc" \
     cfz="$EDITOR ~/.config/zathura/zathurarc" \
     cfv="$EDITOR ~/.config/nvim/init.vim" \
+    cft="$EDITOR ~/.config/tmux/tmux.conf" \
     cfi="$EDITOR ~/.config/i3/config" \
     cfm="$EDITOR ~/.config/mutt/muttrc" \
     eb="$EDITOR ~/Documents/LaTeX/uni.bib" \

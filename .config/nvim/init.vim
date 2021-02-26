@@ -111,6 +111,9 @@ command Respace execute "!sed -i 's/        /\t/g' %"
 " Hit % on if to jump to else
 runtime macros/matchit.vim
 
+" Move text under cursor to new line
+nnoremap <F2> i<CR><Esc>
+
 " Python settings
 " See after/ftplugin/python.vim
 
