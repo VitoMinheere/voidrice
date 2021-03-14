@@ -48,7 +48,9 @@ alias \
 
 # Download all posts from a WP blog
 dwblog() {
-	wget      --recursive   --mirror   --no-clobber      --exclude-directories=category,author,comments,feed,tag,feed,wp-content,wp-json,newsletter            --html-extension      --convert-links      --domains $1      --no-parent $1
+	wget --recursive --mirror --no-clobber \
+        --exclude-directories=category,author,comments,feed,tag,feed,wp-content,wp-json,newsletter \
+        --html-extension --convert-links --domains "$1" --no-parent "$1"
 }
 
 vf() { fzf | xargs -r -I % $EDITOR % ;}
