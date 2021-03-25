@@ -1,0 +1,11 @@
+txn:
+  type: interval
+  before: 
+  after: {"id":0,"start":"20210325T210255Z","tags":["description:watch GCP meetup","uuid:c4407eed-e0f5-4183-a3f5-2692b738a5e7"]}
+txn:
+  type: interval
+  before: {"id":1,"start":"20210325T210255Z","tags":["description:watch GCP meetup","uuid:c4407eed-e0f5-4183-a3f5-2692b738a5e7"]}
+  after: 
+  type: interval
+  before: 
+  after: {"id":1,"start":"20210325T210255Z","end":"20210325T210302Z","tags":["description:watch GCP meetup","uuid:c4407eed-e0f5-4183-a3f5-2692b738a5e7"]}

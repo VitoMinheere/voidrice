@@ -26,7 +26,9 @@ alias ka="killall" \
 	dev=". ~/.local/bin/tools/listprojects" \
 	ll="ls -al" \
 	lsd='ls -l | grep "^d"' \
-    ping='ping -c 5'
+    ping='ping -c 5' \
+    t='task' \
+    tw='timew' \
 
 # GIT aliases
 alias \
@@ -73,6 +75,7 @@ alias \
     cfz="$EDITOR ~/.config/zathura/zathurarc" \
     cfv="$EDITOR ~/.config/nvim/init.vim" \
     cft="$EDITOR ~/.config/tmux/tmux.conf" \
+    cftw="$EDITOR ~/.config/timewarrior/.taskrc" \
     cfi="$EDITOR ~/.config/i3/config" \
     cfm="$EDITOR ~/.config/mutt/muttrc" \
     eb="$EDITOR ~/Documents/LaTeX/uni.bib" \

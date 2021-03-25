@@ -37,5 +37,9 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 # Flutter
 export PATH="$PATH":"/opt/flutter/bin";
-# Android studio
-export ANDROID_HOME="/opt/android-studio/bin/";
+
+# Taskwarrior config location
+export TASKRC=~/.config/taskwarrior/.taskrc
+export TASKDATA=~/.config/taskwarrior/.task
+export TIMEWARRIORDB=~/.config/taskwarrior/.timewarrior
+
