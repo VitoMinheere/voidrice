@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Left click
+if [[ "${BLOCK_BUTTON}" -eq 1 ]]; then
+  bluetoothctl power on > /dev/null
+# Middle click
+elif [[ "${BLOCK_BUTTON}" -eq 2 ]]; then
+  sudo bluetooth toggle > /dev/null
+# Right click
+elif [[ "${BLOCK_BUTTON}" -eq 3 ]]; then
+  bluetoothctl power off > /dev/null
+fi
+
+DEVICE=$(bluetoothctl list | awk '/default/ {print $2}')
+STATUS=$(bluetoothctl show $DEVICE | awk '/Powered/ {print $2}')
+DISCOVER=$(bluetoothctl show $DEVICE | awk '/Discoverable:/ {print $2}')
+
+if [[ "${DISCOVER}" = "yes" ]]; then
+  echo " discoverable"
+elif [[ "${STATUS}" = "yes" ]]; then
+  echo " on"
+else
+ echo " off"
+fi

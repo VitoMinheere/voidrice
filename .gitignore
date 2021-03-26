@@ -10,6 +10,7 @@
 !.xprofile
 
 # Configs
+!.config/aliasrc
 !.config/calcurse
 !.config/dunst
 !.config/fontconfig
