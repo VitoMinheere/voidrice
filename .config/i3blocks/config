@@ -1,5 +1,5 @@
 command=~/.local/bin/statusbar/$BLOCK_NAME
-separator_block_width=15
+separator_block_width=5
 markup=pango
 
 [record]
@@ -8,10 +8,9 @@ interval=once
 signal=9
 
 [music]
-label=
-command=mpc status
-interval=5
-signal=11
+command=music
+interval=once
+signal=10
 
 [pacpackages]
 label=📦
