@@ -29,6 +29,7 @@ alias ka="killall" \
     ping='ping -c 5' \
     t='task' \
     tw='timew' \
+    blc='bluetoothctl' \
 
 # GIT aliases
 alias \
@@ -56,6 +57,7 @@ dwblog() {
 }
 
 vf() { fzf | xargs -r -I % $EDITOR % ;}
+zf() { fzf | xargs -r -I % $READER % ;}
 
 # shortcuts
 alias \

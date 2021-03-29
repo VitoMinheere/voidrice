@@ -1,4 +1,7 @@
 #!/bin/bash
+# Create a new project directory and add relevant files
+
+
 dir="$HOME/Developer"
 project_dir="$dir"/"$1"
 
@@ -11,9 +14,11 @@ do
     mkdir -p "$project_dir/$name"
 done
 
+cd "$project_dir" || exit
+
 # Add .envrc file
 touch "$project_dir/.envrc"
+#direnv allow
 
-# Add tmux project file
-touch "$project_dir/$name.yaml"
-
+# Copy tmux env file
+cp "$HOME/.config/tmux/templates/tmux_env" "$project_dir/"
