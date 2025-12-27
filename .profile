@@ -4,8 +4,8 @@
 # Adds `~/.scripts` and all subdirectories to $PATH
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 export EDITOR="nvim"
-export TERMINAL="st"
-export BROWSER="brave"
+export TERMINAL="wezterm"
+export BROWSER="libre-wolf"
 export READER="zathura"
 export FILE="lf"
 export BIB="$HOME/Documents/LaTeX/uni.bib"
